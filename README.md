@@ -49,7 +49,9 @@ cd educhat
 
 # 2. Create virtual environment
 python3.10 -m venv venv  # Replace the version for your own but recommend using 3.10
+
 source venv/bin/activate  # Linux/Mac
+
 venv\Scripts\activate   # Windows
 
 # 3. Install dependencies
@@ -144,15 +146,6 @@ response = requests.post(
 )
 print(response.json())
 
-# Streaming response
-response = requests.post(
-    "http://localhost:8000/ask/stream",
-    json={"question": "Explain transformers"},
-    stream=True
-)
-for line in response.iter_lines():
-    if line:
-        print(line.decode())
 
 ## Evaluation
 
