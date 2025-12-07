@@ -72,17 +72,17 @@ python -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 #### Build and start all services
 docker-compose up --build
 
-#### API: http://localhost:8000
-#### Frontend: http://localhost:3000
+### API: http://localhost:8000
+### Frontend: http://localhost:3000
 
-## API Documentation
+### API Documentation
 
 ### Interactive Docs
 - **Swagger UI**: http://localhost:8000/docs
 - **ReDoc**: http://localhost:8000/redoc
-# Simply open frontend/index.html in your browser
+### Simply open frontend/index.html in your browser
 
-### Endpoint Summary
+## Endpoint Summary
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
