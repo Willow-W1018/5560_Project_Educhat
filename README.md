@@ -18,13 +18,13 @@ A comprehensive RAG-based (Retrieval-Augmented Generation) educational question 
 ## Setup (First Time)
 
 ### 1. Download SQuAD Dataset
-# Download train-v2.0.json to app/ folder
+### Download train-v2.0.json to app/ folder
 wget https://rajpurkar.github.io/SQuAD-explorer/dataset/train-v2.0.json -O app/train-v2.0.json
 
 ### 2. Download Embedding Model
 
-# The model will auto-download on first run
-# Or manually download to Models/ folder
+### The model will auto-download on first run
+### Or manually download to Models/ folder
 python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('paraphrase-MiniLM-L6-v2').save('Models/paraphrase-MiniLM-L6-v2')"
 
 ### 3. Initialize Database
@@ -43,37 +43,37 @@ python scripts/init_squad.py
 
 ### Option 1: Local Development
 
-# 1. Clone the repository
+#### 1. Clone the repository
 git clone https://github.com/Willow-W1018/5560_Project_Educhat
 cd educhat
 
-# 2. Create virtual environment
+#### 2. Create virtual environment
 python3.10 -m venv venv  # Replace the version for your own but recommend using 3.10
 
 source venv/bin/activate  # Linux/Mac
 
 venv\Scripts\activate   # Windows
 
-# 3. Install dependencies
+#### 3. Install dependencies
 pip install -r requirements.txt
 
-# 4. Initialize vector database
+#### 4. Initialize vector database
 python scripts/init_squad.py --max-chunks 1000
 
-# 5. Start the API server
+#### 5. Start the API server
 python -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 
-# 6. Open frontend (in another terminal or browser)
-# Simply open frontend/index.html in your browser
-# Or serve it: python -m http.server 3000 --directory frontend
+#### 6. Open frontend (in another terminal or browser)
+#### Simply open frontend/index.html in your browser
+#### Or serve it: python -m http.server 3000 --directory frontend
 
 ### Option 2: Docker
 
-# Build and start all services
+#### Build and start all services
 docker-compose up --build
 
-# API: http://localhost:8000
-# Frontend: http://localhost:3000
+#### API: http://localhost:8000
+#### Frontend: http://localhost:3000
 
 ## API Documentation
 
@@ -112,34 +112,29 @@ curl -X POST "http://localhost:8000/ask" \
   -H "Content-Type: application/json" \
   -d '{"question": "What is machine learning?", "use_hybrid": true}'
 
-### Streaming Response
-
-curl -X POST "http://localhost:8000/ask/stream" \
-  -H "Content-Type: application/json" \
-  -d '{"question": "Explain neural networks"}'
 
 ### Multi-turn Conversation
 
-# First question
+#### First question
 curl -X POST "http://localhost:8000/chat" \
   -H "Content-Type: application/json" \
   -d '{"question": "What is NLP?", "session_id": "user123"}'
 
-# Follow-up (uses context)
+#### Follow-up (uses context)
 curl -X POST "http://localhost:8000/chat" \
   -H "Content-Type: application/json" \
   -d '{"question": "What are its applications?", "session_id": "user123"}'
 
-### Upload Document
+#### Upload Document
 
 curl -X POST "http://localhost:8000/upload" \
   -F "file=@lecture_notes.pdf"
 
-### Python Client
+#### Python Client
 
 import requests
 
-# Ask question
+#### Ask question
 response = requests.post(
     "http://localhost:8000/ask",
     json={"question": "What is deep learning?", "use_hybrid": True}
@@ -206,21 +201,21 @@ OVERALL QUALITY SCORE: 0.555
 
 The system supports optional JWT and API key authentication:
 
-# Register
+### Register
 curl -X POST "http://localhost:8000/auth/register" \
   -H "Content-Type: application/json" \
   -d '{"username": "student1", "password": "secure123"}'
 
-# Login
+### Login
 curl -X POST "http://localhost:8000/auth/login" \
   -H "Content-Type: application/json" \
   -d '{"username": "student1", "password": "secure123"}'
 
-# Use token
+### Use token
 curl -X GET "http://localhost:8000/auth/me" \
   -H "Authorization: Bearer <token>"
 
-# Or use API key
+### Or use API key
 curl -X GET "http://localhost:8000/auth/me" \
   -H "X-API-Key: edu_xxxxx"
 
@@ -236,13 +231,6 @@ Beyond basic RAG implementation:
 6. **Evaluation Suite** - Quantitative quality metrics
 7. **User Authentication** - JWT and API key support
 8. **Production-Ready Docker** - Multi-stage build, health checks
-
-## Team Responsibilities
-
-| Role | Responsibilities |
-|------|------------------|
-| **Coder A** | Backend API, Docker, Frontend, Documentation |
-| **Coder B** | RAG Pipeline, Embeddings, Vector DB, Evaluation |
 
 ## License
 
