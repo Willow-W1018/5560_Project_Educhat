@@ -1,0 +1,25 @@
+# Web Framework
+fastapi>=0.109.0
+uvicorn[standard]>=0.27.0
+python-multipart>=0.0.6
+
+# Data Validation (use latest for Python 3.13 compatibility)
+pydantic>=2.7.0
+
+# Vector Database
+faiss-cpu==1.7.4
+
+# Embeddings
+sentence-transformers>=2.2.2
+
+# PDF Processing
+PyPDF2>=3.0.1
+
+# DOCX Processing
+python-docx==1.1.0
+
+# LLM API Client
+openai>=1.12.0
+
+# Utilities
+numpy==1.26.4

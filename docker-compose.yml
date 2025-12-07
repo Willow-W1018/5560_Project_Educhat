@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  educhat:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: educhat-api
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mount data directory
+      - ./data:/app/data
+      # Mount local model directory
+      - ./Models:/app/Models
+    environment:
+      - PYTHONPATH=/app
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
