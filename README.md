@@ -161,7 +161,6 @@ python scripts/evaluate.py
 ### Sample Output
 
 ## EVALUATION SUMMARY
-===========================================================
 
 Success Rate: 8/8 (100.0%)
 
