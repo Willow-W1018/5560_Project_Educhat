@@ -15,7 +15,7 @@ A comprehensive RAG-based (Retrieval-Augmented Generation) educational question 
 | **Multiple File Formats** | PDF, TXT, DOCX, MD, HTML |
 
 
-## Setup (First Time)
+## Setup (First Time if you download from github, or just skip to QuickStart)
 
 ### 1. Download SQuAD Dataset
 ### Download train-v2.0.json to app/ folder
